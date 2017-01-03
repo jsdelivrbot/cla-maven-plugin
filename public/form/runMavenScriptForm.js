@@ -55,17 +55,19 @@
         allowBlank: false
     });
 
-    var errors = new Baseliner.ComboSingle({
+    var errors = Cla.ui.comboBox({
         fieldLabel: _('Errors'),
         name: 'errors',
         value: params.data.errors || 'fail',
         data: [
-            'fail',
-            'warn',
-            'custom',
-            'silent'
-        ]
+            ['fail'],
+            ['warn'],
+            ['custom'],
+            ['silent']
+        ],
+        singleMode: true
     });
+
     var customError = new Ext.Panel({
         layout: 'column',
         fieldLabel: _('Return Codes'),
