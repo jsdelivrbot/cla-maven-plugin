@@ -26,7 +26,7 @@ reg.register('service.scripting.maven', {
         }
 
         var buildMavenCommand = function(params) {
-            var mavenCommand = 'mvn ';
+            var command = 'mvn ';
             var args = params.args || [];
             var paramsDefaults = params.paramsDefaults || [];
 
@@ -34,20 +34,14 @@ reg.register('service.scripting.maven', {
                 if (typeof args == 'string') {
                     args = [args];
                 }
-                mavenCommand += args.join(' ') + ' ';
+                command += args.join(' ') + ' ';
             }
-            for (var i = 0; i < paramsDefaults.length; i++) {
 
-                if (paramsDefaults[i].length <= 1) {
-                    continue;
-                }
-                if (paramsDefaults[i][0] == '.') {
-                    mavenCommand += ' ' + paramsDefaults[i].replace('.', '');
-                } else {
-                    mavenCommand += ' ' + paramsDefaults[i];
-                }
-            }
-            return mavenCommand;
+            paramsDefaults.forEach(function(element) {
+                command += ' ' + element;
+            });
+
+            return command;
         }
 
         mavenCommand = buildMavenCommand(params);
