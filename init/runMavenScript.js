@@ -7,14 +7,12 @@ reg.register('service.scripting.maven', {
 
     handler: function(ctx, params) {
 
-        var ci = require("cla/ci");
         var regRunRemote = require('cla/reg');
         var fs = require('cla/fs');
         var log = require('cla/log');
         var proc = require("cla/process");
 
         var claBase = proc.env('CLARIVE_BASE');
-        var server = ci.load(params.server);
         var errorsType = params.errors || 'fail';
         var mavenCommand = ' ';
         var executeCommand = 'cd ' + params.home + ';';
