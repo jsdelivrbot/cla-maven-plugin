@@ -9,7 +9,7 @@ directory in Clarive's instance.
 
 ## How to use
 
-Once the plugin is placed in its folder, you can find this service in the palette in the section of generic sercive.
+Once the plugin is placed in its folder, you can find this service in the palette in the section of generic service.
 
 Form to configure has the following fields:
 
