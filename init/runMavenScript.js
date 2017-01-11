@@ -12,14 +12,13 @@ reg.register('service.scripting.maven', {
         var log = require('cla/log');
         var proc = require("cla/process");
 
-        var claBase = proc.env('CLARIVE_BASE');
         var errorsType = params.errors || 'fail';
         var mavenCommand = ' ';
         var executeCommand = 'cd ' + params.home + ';';
         var output = '';
 
-        if (!fs.isDir(claBase + '/' + params.home)) {
-            log.error("No such directory");
+        if (!fs.isDir(params.home)) {
+            log.error("No such directory " + params.home);
             throw new Error('No such directory');
         }
 
