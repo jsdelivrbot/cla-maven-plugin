@@ -7,7 +7,7 @@
 
     var server = Cla.ui.ciCombo({
         name: 'server',
-        class: 'BaselinerX::CI::generic_server',
+        class: 'generic_server',
         fieldLabel: _('Server'),
         value: params.data.server || '',
         allowBlank: false,
@@ -35,9 +35,11 @@
             ['package'],
             ['verify'],
             ['install'],
-            ['deploy']
+            ['deploy'],
+            ['custom goal']
         ],
         value: params.data.args || [],
+        singleMode: true
     });
 
     var paramsDefaults = new Baseliner.ArrayGrid({
@@ -45,7 +47,17 @@
         name: 'paramsDefaults',
         value: params.data.paramsDefaults,
         description: 'params',
-        default_value: '.'
+        default_value: '.',
+        hidden: !(params.data.args == 'custom goal')
+    });
+
+    args.on('addItem', function() {
+        var v = args.getValue();
+        if (v == 'custom goal') {
+            paramsDefaults.show();
+        }else{
+            paramsDefaults.hide();
+        }
     });
 
     var home = Cla.ui.textField({
