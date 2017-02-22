@@ -47,17 +47,7 @@
         name: 'paramsDefaults',
         value: params.data.paramsDefaults,
         description: 'params',
-        default_value: '.',
-        hidden: !(params.data.args == 'custom goal')
-    });
-
-    args.on('addItem', function() {
-        var v = args.getValue();
-        if (v == 'custom goal') {
-            paramsDefaults.show();
-        }else{
-            paramsDefaults.hide();
-        }
+        default_value: '.'
     });
 
     var home = Cla.ui.textField({
