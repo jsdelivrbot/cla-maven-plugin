@@ -27,13 +27,14 @@ reg.register('service.scripting.maven', {
             var args = params.args || [];
             var paramsDefaults = params.paramsDefaults || [];
 
-            if (args && args.length > 0) {
-                if (typeof args == 'string') {
-                    args = [args];
+            if (args != "custom goal") {
+                if (args && args.length > 0) {
+                    if (typeof args == 'string') {
+                        args = [args];
+                    }
+                    command += args.join(' ') + ' ';
                 }
-                command += args.join(' ') + ' ';
             }
-
             paramsDefaults.forEach(function(element) {
                 command += ' ' + element;
             });
@@ -42,7 +43,7 @@ reg.register('service.scripting.maven', {
         }
 
         mavenCommand = buildMavenCommand(params);
-        if(mavenCommand == 'mvn '){
+        if (mavenCommand == 'mvn ') {
             log.error("You have not put any goals");
             throw new Error('You have not put any goals');
         }
