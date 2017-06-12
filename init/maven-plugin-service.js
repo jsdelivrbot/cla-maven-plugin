@@ -1,33 +1,33 @@
 var reg = require('cla/reg');
 
-reg.register('service.scripting.maven', {
-    name: 'Run a maven script',
+reg.register('service.maven.command', {
+    name: 'Run a maven command',
     icon: 'plugin/cla-maven-plugin/icon/maven.svg',
-    form: '/plugin/cla-maven-plugin/form/runMavenScriptForm.js',
+    form: '/plugin/cla-maven-plugin/form/maven-plugin-form.js',
 
     handler: function(ctx, params) {
 
-        var regRunRemote = require('cla/reg');
+        var reg = require('cla/reg');
         var fs = require('cla/fs');
         var log = require('cla/log');
-        var proc = require("cla/process");
+        var proc = require('cla/process');
 
         var errorsType = params.errors || 'fail';
-        var mavenCommand = ' ';
-        var executeCommand = 'cd ' + params.home + ';';
+	    var path = params.path;
+        var mavenCommand = 'mvn';
+        var executeCommand = 'cd ' + path + ';';
         var output = '';
 
-        if (!fs.isDir(params.home)) {
-            log.error("No such directory " + params.home);
-            throw new Error('No such directory');
+        if (!fs.isDir(path)) {
+            log.fatal('No such path ' + path + ' in  this server ' + params.server);
         }
 
         var buildMavenCommand = function(params) {
-            var command = 'mvn ';
+            var command = '';
             var args = params.args || [];
             var paramsDefaults = params.paramsDefaults || [];
 
-            if (args != "custom goal") {
+            if (args != 'custom goal') {
                 if (args && args.length > 0) {
                     if (typeof args == 'string') {
                         args = [args];
@@ -43,20 +43,19 @@ reg.register('service.scripting.maven', {
         }
 
         mavenCommand = buildMavenCommand(params);
-        if (mavenCommand == 'mvn ') {
-            log.error("You have not put any goals");
-            throw new Error('You have not put any goals');
+        if (mavenCommand == 'mvn') {
+            log.fatal('You have not put any goals');
         }
 
         executeCommand += ' ' + mavenCommand;
 
-        output = regRunRemote.launch('service.scripting.remote', {
-            name: 'Run a maven script',
+        output = reg.launch('service.scripting.remote', {
+            name: 'Run a maven command',
             config: {
                 errors: errorsType,
                 server: params.server,
                 user: params.user,
-                home: params.home,
+                path: path,
                 path: executeCommand,
                 output_error: params.output_error,
                 output_warn: params.output_warn,

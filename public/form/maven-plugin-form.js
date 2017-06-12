@@ -1,67 +1,82 @@
 (function(params) {
     Cla.help_push({
-        title: _('Run Maven Script'),
+        title: _('Run Maven Command'),
         path: 'rules/palette/job/run-remote'
     });
     var data = params.data || {};
 
-    var server = Cla.ui.ciCombo({
+    var serverCombo = Cla.ui.ciCombo({
         name: 'server',
         class: 'generic_server',
         fieldLabel: _('Server'),
-        value: params.data.server || '',
+        value: data.server || '',
         allowBlank: false,
         with_vars: 1
     });
 
-    var user = Cla.ui.textField({
+    var userText = Cla.ui.textField({
         name: 'user',
         fieldLabel: _('User'),
-        value: params.data.user
-    });
+        value: data.user
+    });serverCombo
 
-    var args = Cla.ui.comboBox({
-        name: 'args',
+    var goalsComboBox = Cla.ui.comboBox({
+        name: 'goals',
         fieldLabel: _('Goals'),
         data: [
             ['clean'],
-            ['validate'],
+            ['compile'],
+            ['deploy'],
+            ['install'],
+            ['package'],
             ['initialize'],
+            ['validate'],
+            ['test'],
+            ['verify'],
             ['generate-sources'],
             ['process-sources'],
             ['generate-resources'],
             ['process-resources'],
-            ['compile'],
-            ['test'],
-            ['package'],
-            ['verify'],
-            ['install'],
-            ['deploy'],
-            ['custom goal']
+            ['custom goals']
         ],
-        value: params.data.args || [],
-        singleMode: true
+        value: data.goals || [],
+        singleMode: false 
     });
 
-    var paramsDefaults = new Baseliner.ArrayGrid({
-        fieldLabel: _('Custom goals'),
-        name: 'paramsDefaults',
-        value: params.data.paramsDefaults,
-        description: 'params',
-        default_value: '.'
+    var customParams = new Baseliner.ArrayGrid({
+        fieldLabel: _('Custom Params'),
+        name: 'custom',
+        value: data.custom,
+        description: 'custom',
+        default_value: '.',
+        hidden: ( data.goals != 'custom goals')
+    });
+    
+    goalsComboBox.on('addItem', function() {
+        var v = goalsComboBox.getValue();
+        if( v.indexOf('custom goals') > 0 ){
+            customParams.show();
+        }
     });
 
-    var home = Cla.ui.textField({
-        name: 'home',
-        fieldLabel: _('Home Directory'),
-        value: params.data.home || '',
+    goalsComboBox.on('removeItem', function() {
+        var v = goalsComboBox.getValue();
+        if( v.indexOf('custom goals') <  0 ){
+            customParams.hide();
+        }
+    });
+
+    var pathText = Cla.ui.textField({
+        name: 'path',
+        fieldLabel: _('Project Path'),
+        value: data.path || '',
         allowBlank: false
     });
 
     var errors = new Baseliner.ComboSingle({
         fieldLabel: _('Errors'),
         name: 'errors',
-        value: params.data.errors || 'fail',
+        value: data.errors || 'fail',
         data: [
             'fail',
             'warn',
@@ -74,7 +89,7 @@
         layout: 'column',
         fieldLabel: _('Return Codes'),
         frame: true,
-        hidden: params.data.errors != 'custom',
+        hidden: data.errors != 'custom',
         items: [{
             layout: 'form',
             columnWidth: .33,
@@ -123,15 +138,15 @@
     });
 
     return [
-        server,
-        user,
-        args,
-        paramsDefaults,
-        home,
+        serverCombo,
+        userText,
+        goalsComboBox,
+        customParams,
+        pathText,
         errors,
         customError,
         new Baseliner.ErrorOutputTabs({
-            data: params.data
+            data: data
         })
     ]
 })
