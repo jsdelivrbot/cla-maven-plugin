@@ -12,8 +12,8 @@ reg.register('service.maven.command', {
         var log = require('cla/log');
         var proc = require('cla/process');
 
-        var errorsType = params.errors || 'fail';
-	    var path = params.path;
+        var errorsType = params.type || 'fail';
+        var path = params.path;
         var mavenCommand = 'mvn';
         var executeCommand = 'cd ' + path + ';';
         var output = '';
@@ -24,7 +24,7 @@ reg.register('service.maven.command', {
 
         var buildMavenCommand = function(params) {
             var command = '';
-            var args = params.args || [];
+            var args = params.goals || [];
             var paramsDefaults = params.paramsDefaults || [];
 
             if (args != 'custom goal') {
@@ -39,7 +39,7 @@ reg.register('service.maven.command', {
                 command += ' ' + element;
             });
 
-            return command;
+            return "mvn " + command;
         }
 
         mavenCommand = buildMavenCommand(params);
@@ -55,16 +55,15 @@ reg.register('service.maven.command', {
                 errors: errorsType,
                 server: params.server,
                 user: params.user,
-                path: path,
                 path: executeCommand,
                 output_error: params.output_error,
                 output_warn: params.output_warn,
                 output_capture: params.output_capture,
                 output_ok: params.output_ok,
                 meta: params.meta,
-                rc_ok: params.rcOk,
-                rc_error: params.rcError,
-                rc_warn: params.rcWarn
+                rc_ok: params.ok,
+                rc_error: params.error,
+                rc_warn: params.warn
             }
         });
         return output;
