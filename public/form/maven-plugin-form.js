@@ -14,13 +14,6 @@
             with_vars: 1
         });
 
-        var userText = Cla.ui.textField({
-            name: 'user',
-            fieldLabel: _('User'),
-            value: data.user
-        });
-        serverCombo
-
         var goalsComboBox = Cla.ui.comboBox({
             name: 'goals',
             fieldLabel: _('Goals'),
@@ -55,6 +48,7 @@
 
         goalsComboBox.on('addItem', function() {
             var v = goalsComboBox.getValue();
+            console.log(goalsComboBox.getValue())
             if (v.indexOf('custom goals') > 0) {
                 customParams.show();
             }
@@ -75,20 +69,19 @@
         });
 
         var errors = Cla.ui.errorManagementBox({
-                errorTypeName: 'type',
-                errorTypeValue: params.data.type || 'warn',
-                rcOkName: 'ok',
-                rcOkValue: params.data.ok,
-                rcWarnName: 'warn',
-                rcWarnValue: params.data.warn,
-                rcErrorName: 'error',
-                rcErrorValue: params.data.error,
+                errorTypeName: 'errorType',
+                errorTypeValue: params.data.errorType || 'fail',
+                rcOkName: 'rcOk',
+                rcOkValue: params.data.rcOk,
+                rcWarnName: 'rcWarn',
+                rcWarnValue: params.data.rcWarn,
+                rcErrorName: 'rcError',
+                rcErrorValue: params.data.rcError,
                 errorTabsValue: params.data
         });
 
     return [
         serverCombo,
-        userText,
         goalsComboBox,
         customParams,
         pathText,
