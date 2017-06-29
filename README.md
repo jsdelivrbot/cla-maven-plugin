@@ -32,6 +32,4 @@ Executing this command we create a maven project with the package, the name and 
    - **Warn** - Range of return code values to warn the user. A warn message will be displayed in monitor.
    - **Error** - Range of return code values for the script to have failed. An error message will be displayed in monitor.
 
-
-
-
+The service will return the command output.
