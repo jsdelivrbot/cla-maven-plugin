@@ -18,20 +18,20 @@
             name: 'goals',
             fieldLabel: _('Goals'),
             data: [
-                ['clean', 'clean'],
-                ['compile', 'compile'],
-                ['deploy', 'deploy'],
-                ['install', 'install'],
-                ['package', 'package'],
-                ['initialize', 'initialize'],
-                ['validate', 'validate'],
-                ['test', 'test'],
-                ['verify', 'verify'],
-                ['generate-sources', 'generate-sources'],
-                ['process-sources', 'process-sources'],
-                ['generate-resources', 'generate-resources'],
-                ['process-resources', 'process-resources'],
-                ['custom goals', 'custom goals']
+                ['clean', _('clean')],
+                ['compile', _('compile')],
+                ['deploy', _('deploy')],
+                ['install', _('install')],
+                ['package', _('package')],
+                ['initialize', _('initialize')],
+                ['validate', _('validate')],
+                ['test', _('test')],
+                ['verify', _('verify')],
+                ['generate-sources', _('generate-sources')],
+                ['process-sources', _('process-sources')],
+                ['generate-resources', _('generate-resources')],
+                ['process-resources', _('process-resources')],
+                ['custom goals', _('custom goals')]
             ],
             value: data.goals || [],
             singleMode: false
@@ -41,7 +41,7 @@
             fieldLabel: _('Custom Params'),
             name: 'custom',
             value: data.custom,
-            description: 'custom',
+            description: _('custom'),
             default_value: '.',
             hidden: (data.goals != 'custom goals')
         });

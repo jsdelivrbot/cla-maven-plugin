@@ -1,7 +1,7 @@
 var reg = require('cla/reg');
 
 reg.register('service.maven.command', {
-    name: 'Run a maven command',
+    name: _('Run a maven command'),
     icon: 'plugin/cla-maven-plugin/icon/maven.svg',
     form: '/plugin/cla-maven-plugin/form/maven-plugin-form.js',
     handler: function(ctx, params) {
@@ -12,7 +12,7 @@ reg.register('service.maven.command', {
 
         var buildMavenCommand = function(params, errorsType, executeCommand) {
             var output = reg.launch('service.scripting.remote', {
-                name: 'Run a maven command',
+                name: _('Run a maven command'),
                 config: {
                     errors: errorsType,
                     server: params.server,
@@ -41,7 +41,7 @@ reg.register('service.maven.command', {
         var executeCommand = 'cd ' + path + ';';
 
         if (!fs.isDir(path)) {
-            log.fatal('No such path ' + path + ' in  this server ' + params.server);
+            log.fatal(_('No such path ') + path + _(' in  this server ') + params.server);
         }
 
         var command = '';
@@ -71,7 +71,7 @@ reg.register('service.maven.command', {
         executeCommand += ' ' + launchCommand;
 
         if (launchCommand == 'mvn ') {
-            log.fatal('You have not put any goals');
+            log.fatal(_('You have not put any goals'));
         }
 
         var response = buildMavenCommand(params, errorsType, executeCommand);

@@ -1,0 +1,95 @@
+#: init/maven-plugin-service.js
+msgid "Run a maven command"
+msgstr "Ejecutar comando de maven"
+
+#: init/maven-plugin-service.js
+msgid "No such path "
+msgstr "No existe esa ruta "
+
+#: init/maven-plugin-service.js
+msgid " in  this server "
+msgstr " en este servidor "
+
+#: init/maven-plugin-service.js
+msgid "You have not put any goals"
+msgstr "No has seleccionado ningún objetivo"
+
+#: public/form/maven-plugin-form.js
+msgid "Run Maven Command"
+msgstr "Ejecutar comando de Maven"
+
+#: public/form/maven-plugin-form.js
+msgid "Server"
+msgstr "Servidor"
+
+#: public/form/maven-plugin-form.js
+msgid "Goals"
+msgstr "Objetivos"
+
+#: public/form/maven-plugin-form.js
+msgid "clean"
+msgstr "Limpiar"
+
+#: public/form/maven-plugin-form.js
+msgid "compile"
+msgstr "Compilar"
+
+#: public/form/maven-plugin-form.js
+msgid "deploy"
+msgstr "Desplegar"
+
+#: public/form/maven-plugin-form.js
+msgid "install"
+msgstr "Instalar"
+
+#: public/form/maven-plugin-form.js
+msgid "package"
+msgstr "Empaquetar"
+
+#: public/form/maven-plugin-form.js
+msgid "initialize"
+msgstr "Inicializar"
+
+#: public/form/maven-plugin-form.js
+msgid "validate"
+msgstr "Validar"
+
+#: public/form/maven-plugin-form.js
+msgid "test"
+msgstr "Test"
+
+#: public/form/maven-plugin-form.js
+msgid "verify"
+msgstr "Verificar"
+
+#: public/form/maven-plugin-form.js
+msgid "generate-sources"
+msgstr "Generar fuentes"
+
+#: public/form/maven-plugin-form.js
+msgid "process-sources"
+msgstr "Procesar fuentes"
+
+#: public/form/maven-plugin-form.js
+msgid "generate-resources"
+msgstr "Generar recursos"
+
+#: public/form/maven-plugin-form.js
+msgid "process-resources"
+msgstr "Procesas recursos"
+
+#: public/form/maven-plugin-form.js
+msgid "custom goals"
+msgstr "Objetivos personalizados"
+
+#: public/form/maven-plugin-form.js
+msgid "Custom Params"
+msgstr "Parámetros personalizados"
+
+#: public/form/maven-plugin-form.js
+msgid "custom"
+msgstr "personalizado"
+
+#: public/form/maven-plugin-form.js
+msgid "Project Path"
+msgstr "Ruta de proyecto"
