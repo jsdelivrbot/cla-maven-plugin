@@ -2,6 +2,14 @@
 
 Execute a maven script. Associate server agent will execute the script.
 
+## What is Maven
+
+Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
+
+## Requirements
+
+This plugin requires Maven to be installed in the system where you wish to execute the command.
+
 ## Installing
 
 To install the plugin place the cla-maven-plugin folder inside `CLARIVE_BASE/plugins`

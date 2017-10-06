@@ -7,7 +7,7 @@
 
         var serverCombo = Cla.ui.ciCombo({
             name: 'server',
-            class: 'generic_server',
+            role: 'Server',
             fieldLabel: _('Server'),
             value: data.server || '',
             allowBlank: false,
