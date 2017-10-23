@@ -1,8 +1,4 @@
 (function(params) {
-        Cla.help_push({
-            title: _('Run Maven Command'),
-            path: 'rules/palette/job/run-remote'
-        });
         var data = params.data || {};
 
         var serverCombo = Cla.ui.ciCombo({
@@ -68,6 +64,13 @@
             allowBlank: false
         });
 
+        var userTextField = Cla.ui.textField({
+            name: 'user',
+            fieldLabel: _('User'),
+            value: data.user || '',
+            allowBlank: true
+        });
+
         var errors = Cla.ui.errorManagementBox({
                 errorTypeName: 'errorType',
                 errorTypeValue: params.data.errorType || 'fail',
@@ -82,6 +85,7 @@
 
     return [
         serverCombo,
+        userTextField,
         goalsComboBox,
         customParams,
         pathText,
