@@ -1,7 +1,7 @@
 name: Clarive Maven Plugin
 description: Compile Maven projects from Clarive.
 version: 1.0
-icon: https://github.com/clarive/cla-maven-plugin/public/icon/maven.svg
+icon: https://cdn.rawgit.com/clarive/cla-maven-plugin/master/public/icon/maven.svg?sanitize=true
 url: https://github.com/clarive/cla-maven-plugin
 requires:
   - clarive_version: 6.8 <= version
