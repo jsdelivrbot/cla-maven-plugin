@@ -1,4 +1,4 @@
-name: Clarive Maven Plugin
+name: Maven Plugin
 description: Compile Maven projects from Clarive.
 version: 1.0
 icon: https://cdn.rawgit.com/clarive/cla-maven-plugin/master/public/icon/maven.svg?sanitize=true
