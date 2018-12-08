@@ -1,6 +1,6 @@
 # Maven Plugin
 
-<img src="https://cdn.rawgit.com/clarive/cla-maven-plugin/master/public/icon/maven.svg?sanitize=true" alt="Maven Plugin" title="Maven Plugin" width="120" height="120">
+<img src="https://cdn.jsdelivr.net/gh/clarive/cla-maven-plugin/public/icon/maven.svg?sanitize=true" alt="Maven Plugin" title="Maven Plugin" width="120" height="120">
 
 Execute a maven script. Associate server agent will execute the script.
 
